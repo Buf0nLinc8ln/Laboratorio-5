@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 LIBS = -lm
 
-SRCS = main.c funciones.c otras_funciones.c
+SRCS = main.c ListasDoblementeEnlazadas.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 

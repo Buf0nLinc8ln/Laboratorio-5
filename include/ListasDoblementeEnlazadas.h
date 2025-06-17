@@ -15,5 +15,6 @@ void EliminarElemento(struct Node *head, int data);
 struct Node *BuscarElemento(struct Node *head, int data);
 void RecorrerHaciaAdelante(struct Node *head);
 void RecorrerHaciaAtras(struct Node *cola);
+void freeLista(struct Node *head);
 
 #endif

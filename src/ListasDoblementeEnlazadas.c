@@ -34,27 +34,33 @@ void InsertarAlFinal(struct Node **cola, int data) {
     if (*cola != NULL) {
         newNode->prev = *cola;
         (*cola)->next = newNode;
+        *cola = newNode;
     }
-} 
+}
+
 
 void InsertarEnUnaPosicionEspecifica(struct Node *head, int data, int posicion) {
     struct Node *newNode = CrearNodo(data);
     int indice = 0;
     struct Node *nodeActual = head;
-    while(nodeActual != NULL && indice < posicion) {
-        indice++;
+
+    while (nodeActual != NULL && indice < posicion) {
         nodeActual = nodeActual->next;
+        indice++;
     }
-        if (nodeActual != NULL) {
-            if (nodeActual->prev != NULL) {
-                newNode->prev = nodeActual->prev;
-                nodeActual->prev = newNode;
-                newNode->next = nodeActual;
-                nodeActual->prev->next = newNode;
-            }
-        } 
-      
+
+    if (nodeActual != NULL) {
+        struct Node *prev = nodeActual->prev;
+        newNode->next = nodeActual;
+        newNode->prev = prev;
+        nodeActual->prev = newNode;
+        if (prev != NULL) {
+            prev->next = newNode;
+        }
+    }
 }
+
+
 
 void EliminarElemento(struct Node *head, int data) {
     
@@ -108,4 +114,13 @@ void RecorrerHaciaAtras(struct Node *cola) {
 
     }
 
+}
+
+void freeLista(struct Node *head) {
+    struct Node *nodeActual = head;
+    while (nodeActual != NULL) {
+        struct Node *nodoSiguiente = nodeActual->next;
+        free(nodeActual);
+        nodeActual = nodoSiguiente;
+    }
 }

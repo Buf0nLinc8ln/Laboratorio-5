@@ -1,3 +1,4 @@
+
 // bibliotecas que usan
 
 #include <stdio.h>
@@ -5,14 +6,14 @@
 // Los .h de cada estructura
 
 #include "../Laboratorio-5/include/ListasDoblementeEnlazadas.h"
-
+#include "stack.h"
 
 int main() {
     int opcion;
 
     while (1) {
         printf("\nMenú:\n");
-        printf("[0. Salir|1. ListasDoblementeEnlazadas|3. otra estructura]:"); // agregar nombre de estructura, numerado
+        printf("[0. Salir|1. ListasDoblementeEnlazadas|2. Stack]:"); // agregar nombre de estructura, numerado
         printf("Ingrese una opción:");
         scanf("%d", &opcion);
 
@@ -63,6 +64,19 @@ int main() {
 
             freeLista(head1);
 
+        } else if (opcion == 2) {
+            printf("\nEjecutando ejemplo de 'Stack'\n");
+            Stack s;
+            initialize(&s);
+            printf("Añadiendo 5 y 10 en la pila...\n");
+            push(&s, 5);
+            push(&s, 10);
+            printStack(&s);
+            printf("Eliminando el último elemento de la pila...\n");
+            int elim = pop(&s);
+            printf("Elemento eliminado de la pila: %d\n", elim);
+            printStack(&s);
+
         } else if (opcion == 0) {
             printf("Saliendo...\n");
             break;
@@ -70,6 +84,7 @@ int main() {
             printf("Opción no existe\n");
         }
     }
+
 
     return 0;
 }

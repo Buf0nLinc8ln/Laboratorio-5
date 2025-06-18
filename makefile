@@ -13,3 +13,4 @@ stack.o: stack.c stack.h
 
 clean:
 	rm -f *.o $(EXEC)
+

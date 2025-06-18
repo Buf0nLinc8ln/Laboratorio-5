@@ -1,13 +1,14 @@
 
+
 // bibliotecas que usan
 
 #include <stdio.h>
-
+#include <stdlib.h>
 // Los .h de cada estructura
 
 #include "../Laboratorio-5/include/ListasDoblementeEnlazadas.h"
 #include "stack.h"
-
+#include "lista.h"
 int main() {
     int opcion;
 
@@ -77,14 +78,56 @@ int main() {
             printf("Elemento eliminado de la pila: %d\n", elim);
             printStack(&s);
 
+	 } else if (opcion == 3) {
+            printf("\nEjecutando ejemplo de 'Lista Enlazada Simple'\n");
+            struct Node* head = NULL;
+
+            
+            struct Node* nodo1 = (struct Node*)malloc(sizeof(struct Node));
+            nodo1->data = 5;
+            nodo1->next = NULL;
+
+            struct Node* nodo2 = (struct Node*)malloc(sizeof(struct Node));
+            nodo2->data = 10;
+            nodo2->next = nodo1;
+
+            head = nodo2;
+
+            
+            inserfin(&head, 99);
+
+            
+            inserInicio(&head, 18);
+
+            
+            buscar_valor(&head);
+
+       
+            imprimirlista(head);
+
+      
+            eliminarnodo(&head);
+            imprimirlista(head);
+
+            
+            posicionesp(&head);
+            imprimirlista(head);
+
+            struct Node* temp;
+            while (head != NULL) {
+                temp = head->next;
+                free(head);
+                head = temp;
+            }
+
         } else if (opcion == 0) {
             printf("Saliendo...\n");
             break;
+
         } else {
             printf("Opción no existe\n");
         }
     }
-
 
     return 0;
 }

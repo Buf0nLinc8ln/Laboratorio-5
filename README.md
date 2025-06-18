@@ -6,4 +6,4 @@
 - `Makefile` : Script para compilar automáticamente
 
 ## Ejecucion del programa
-- utilizar .main para la ejecucion luego de hacer make
+- utilizar .`/`main para la ejecucion luego de hacer make

@@ -1,5 +1,5 @@
-## Estruvtura de datos
-- Listas elnazadas
+## Estructura de datos
+- Listas enlazadas
 ## Edtructura de carpetas
 - `src/` : Archivos fuente (`.c`)
 - `include/` : Archivos de cabecera (`.h`)

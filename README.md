@@ -23,4 +23,3 @@ Para compilar se debe tener instalado `gcc` y ejecuta el  comando desde el direc
 
 ```bash
 make
-

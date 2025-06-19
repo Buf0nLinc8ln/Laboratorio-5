@@ -1,13 +1,18 @@
 CC = gcc
 CFLAGS = -Iinclude
-SRC = src/main.c src/lista.c
+SRC =  src/lista.c
+
+
 TARGET = main
+
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+
+$(TARGET): main.c $(SRC)
+	$(CC) $(CFLAGS) main.c $(SRC) -o $(TARGET)
+
 
 clean:
-	rm -f $(TARGET)
+	rm -f *.o $(TARGET)
 

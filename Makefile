@@ -1,18 +1,18 @@
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -g
 LIBS = -lm
 
-SRCS = main.c ListasDoblementeEnlazadas.c
+SRCS = main.c src/ListasDoblementeEnlazadas.c src/stack.c src/lista.c
 OBJS = $(SRCS:.c=.o)
-DEPS = $(SRCS:.c=.d)
+EXEC = programa
 
-programa: $(OBJS)
-    $(CC) $(CFLAGS) -o programa $(OBJS) $(LIBS)
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
 
 %.o: %.c
-    $(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-    rm -f programa $(OBJS) $(DEPS)
-
--include $(DEPS)
+	rm -f $(EXEC) $(OBJS)

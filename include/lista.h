@@ -1,18 +1,18 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-struct Node {
+struct nodeSimple {
         int data;
-        struct Node* next;
+        struct nodeSimple* next;
 
 };
 
-void inserInicio(struct Node ** head, int valor);
-void imprimirlista(struct Node* head);
-void inserfin(struct Node ** head, int valor);
-void posicionesp(struct Node **head);
-void eliminarnodo(struct Node **head);
-void buscar_valor(struct Node** head);
+void inserInicio(struct nodeSimple ** head, int valor);
+void imprimirlista(struct nodeSimple* head);
+void inserfin(struct nodeSimple ** head, int valor);
+void posicionesp(struct nodeSimple **head);
+void eliminarnodo(struct nodeSimple **head);
+void buscar_valor(struct nodeSimple** head);
 
 
 #endif

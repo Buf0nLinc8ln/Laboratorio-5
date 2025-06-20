@@ -1,28 +1,29 @@
-
-
 // bibliotecas que usan
 
 #include <stdio.h>
 #include <stdlib.h>
+
 // Los .h de cada estructura
 
 #include "../Laboratorio-5/include/ListasDoblementeEnlazadas.h"
-#include "stack.h"
-#include "lista.h"
+#include "../Laboratorio-5/include/stack.h"
+#include "../Laboratorio-5/include/lista.h"
+
 int main() {
     int opcion;
 
     while (1) {
         printf("\nMenú:\n");
-        printf("[0. Salir|1. ListasDoblementeEnlazadas|2. Stack]:"); // agregar nombre de estructura, numerado
+        printf("[0. Salir|1. ListasDoblementeEnlazadas|2. Stack|3. Lista Enlazada Simple]:"); // agregar nombre de estructura, numerado
         printf("Ingrese una opción:");
         scanf("%d", &opcion);
-
-        if (opcion == 1) {
-            printf("\nEjecutando ejemplo de 'Listas Doblemente Enlazadas'\n");
+        if (opcion >= 0 && opcion <= 3) {
+            if (opcion == 1) {
+            printf("\nEjecutando ejemplo de 'Listas Doblemente Enlazadas':\n");
+            printf("\n");
             printf("Se crea nodo con valor 3:\n");
-            struct Node *head = CrearNodo(3);
-            struct Node *cola = NULL;
+            struct nodeDoble *head = CrearNodo(3);
+            struct nodeDoble *cola = NULL;
             printf("Se inserta nodo al inicio con valor 5:\n");
             InsertarAlInicio(&head, 5);
             printf("Se recorre hacia adelante:\n");
@@ -42,7 +43,7 @@ int main() {
             EliminarElemento(head, 5);
             RecorrerHaciaAdelante(head);
             printf("\n");
-            struct Node *nodoEncontrado = BuscarElemento(head, 3);
+            struct nodeDoble *nodoEncontrado = BuscarElemento(head, 3);
             if (nodoEncontrado != NULL) {
                 printf("Se encontro el nodo con valor: %d\n", nodoEncontrado->data);
             } else {
@@ -51,7 +52,7 @@ int main() {
 
 
             // encontrar cola
-            struct Node *head1 = head;
+            struct nodeDoble *head1 = head;
             cola = head;
             while (cola != NULL && cola->next != NULL) {
                 cola = cola->next;
@@ -65,7 +66,9 @@ int main() {
 
             freeLista(head1);
 
-        } else if (opcion == 2) {
+            }
+        
+            if (opcion == 2) {
             printf("\nEjecutando ejemplo de 'Stack'\n");
             Stack s;
             initialize(&s);
@@ -78,16 +81,18 @@ int main() {
             printf("Elemento eliminado de la pila: %d\n", elim);
             printStack(&s);
 
-	 } else if (opcion == 3) {
+	        } 
+     
+            if (opcion == 3) {
             printf("\nEjecutando ejemplo de 'Lista Enlazada Simple'\n");
-            struct Node* head = NULL;
+            struct nodeSimple* head = NULL;
 
             
-            struct Node* nodo1 = (struct Node*)malloc(sizeof(struct Node));
+            struct nodeSimple* nodo1 = (struct nodeSimple*)malloc(sizeof(struct nodeSimple));
             nodo1->data = 5;
             nodo1->next = NULL;
 
-            struct Node* nodo2 = (struct Node*)malloc(sizeof(struct Node));
+            struct nodeSimple* nodo2 = (struct nodeSimple*)malloc(sizeof(struct nodeSimple));
             nodo2->data = 10;
             nodo2->next = nodo1;
 
@@ -113,21 +118,24 @@ int main() {
             posicionesp(&head);
             imprimirlista(head);
 
-            struct Node* temp;
+            struct nodeSimple* temp;
             while (head != NULL) {
                 temp = head->next;
                 free(head);
                 head = temp;
             }
 
-        } else if (opcion == 0) {
+            } 
+        
+            if (opcion == 0) {
             printf("Saliendo...\n");
             break;
+            }
 
         } else {
             printf("Opción no existe\n");
         }
     }
-
     return 0;
 }
+

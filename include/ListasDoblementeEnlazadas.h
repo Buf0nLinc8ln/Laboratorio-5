@@ -1,20 +1,20 @@
 #ifndef LISTASDOBLEMENTEENLAZADAS_H
 #define LISTASDOBLEMENTEENLAZADAS_H
 
-struct Node {
+struct nodeDoble {
     int data;
-    struct Node *next;
-    struct Node *prev;
+    struct nodeDoble *next;
+    struct nodeDoble *prev;
 };
 
-struct Node *CrearNodo(int data);
-void InsertarAlInicio(struct Node **head, int data);
-void InsertarAlFinal(struct Node **cola, int data);
-void InsertarEnUnaPosicionEspecifica(struct Node *head, int data, int posicion);
-void EliminarElemento(struct Node *head, int data);
-struct Node *BuscarElemento(struct Node *head, int data);
-void RecorrerHaciaAdelante(struct Node *head);
-void RecorrerHaciaAtras(struct Node *cola);
-void freeLista(struct Node *head);
+struct nodeDoble *CrearNodo(int data);
+void InsertarAlInicio(struct nodeDoble **head, int data);
+void InsertarAlFinal(struct nodeDoble **cola, int data);
+void InsertarEnUnaPosicionEspecifica(struct nodeDoble *head, int data, int posicion);
+void EliminarElemento(struct nodeDoble *head, int data);
+struct nodeDoble *BuscarElemento(struct nodeDoble *head, int data);
+void RecorrerHaciaAdelante(struct nodeDoble *head);
+void RecorrerHaciaAtras(struct nodeDoble *cola);
+void freeLista(struct nodeDoble *head);
 
 #endif

@@ -2,16 +2,12 @@
 #include <stdlib.h>
 #include "../include/ListasDoblementeEnlazadas.h"
 
-struct Node {
-    int data;
-    struct Node *next;
-    struct Node *prev;
-};
 
 
-struct Node *CrearNodo(int data){
 
-    struct Node* newNode = (struct Node *)malloc(sizeof(struct Node));
+struct nodeDoble *CrearNodo(int data){
+
+    struct nodeDoble* newNode = (struct nodeDoble *)malloc(sizeof(struct nodeDoble));
     newNode->data = data;
     newNode->next = NULL;
     newNode->prev = NULL;
@@ -20,8 +16,8 @@ struct Node *CrearNodo(int data){
 
 }
 
-void InsertarAlInicio(struct Node **head, int data) {
-    struct Node *newNode = CrearNodo(data);
+void InsertarAlInicio(struct nodeDoble **head, int data) {
+    struct nodeDoble *newNode = CrearNodo(data);
     newNode->next = *head;
     if (*head != NULL) {
         (*head)->prev = newNode;
@@ -29,8 +25,8 @@ void InsertarAlInicio(struct Node **head, int data) {
     *head = newNode;
 }   
 
-void InsertarAlFinal(struct Node **cola, int data) {
-    struct Node *newNode = CrearNodo(data);
+void InsertarAlFinal(struct nodeDoble **cola, int data) {
+    struct nodeDoble *newNode = CrearNodo(data);
     if (*cola != NULL) {
         newNode->prev = *cola;
         (*cola)->next = newNode;
@@ -39,10 +35,10 @@ void InsertarAlFinal(struct Node **cola, int data) {
 }
 
 
-void InsertarEnUnaPosicionEspecifica(struct Node *head, int data, int posicion) {
-    struct Node *newNode = CrearNodo(data);
+void InsertarEnUnaPosicionEspecifica(struct nodeDoble *head, int data, int posicion) {
+    struct nodeDoble *newNode = CrearNodo(data);
     int indice = 0;
-    struct Node *nodeActual = head;
+    struct nodeDoble *nodeActual = head;
 
     while (nodeActual != NULL && indice < posicion) {
         nodeActual = nodeActual->next;
@@ -50,7 +46,7 @@ void InsertarEnUnaPosicionEspecifica(struct Node *head, int data, int posicion) 
     }
 
     if (nodeActual != NULL) {
-        struct Node *prev = nodeActual->prev;
+        struct nodeDoble *prev = nodeActual->prev;
         newNode->next = nodeActual;
         newNode->prev = prev;
         nodeActual->prev = newNode;
@@ -62,9 +58,9 @@ void InsertarEnUnaPosicionEspecifica(struct Node *head, int data, int posicion) 
 
 
 
-void EliminarElemento(struct Node *head, int data) {
+void EliminarElemento(struct nodeDoble *head, int data) {
     
-    struct Node *nodeActual = head;
+    struct nodeDoble *nodeActual = head;
     while(nodeActual != NULL) {
         if (nodeActual->data == data) {
             if (nodeActual->prev != NULL) {
@@ -81,9 +77,9 @@ void EliminarElemento(struct Node *head, int data) {
 
 }
 
-struct Node *BuscarElemento(struct Node *head, int data) {
+struct nodeDoble *BuscarElemento(struct nodeDoble *head, int data) {
     
-    struct Node *nodeActual = head;
+    struct nodeDoble *nodeActual = head;
     while(nodeActual != NULL) {
         if (nodeActual->data == data) {
             return nodeActual;
@@ -94,9 +90,9 @@ struct Node *BuscarElemento(struct Node *head, int data) {
 }
 
 
-void RecorrerHaciaAdelante(struct Node *head) {
+void RecorrerHaciaAdelante(struct nodeDoble *head) {
     
-    struct Node *nodeActual = head;
+    struct nodeDoble *nodeActual = head;
     while(nodeActual != NULL) {
         printf("%d ", nodeActual->data);
         nodeActual = nodeActual->next;
@@ -105,9 +101,9 @@ void RecorrerHaciaAdelante(struct Node *head) {
 
 }
 
-void RecorrerHaciaAtras(struct Node *cola) {
+void RecorrerHaciaAtras(struct nodeDoble *cola) {
     
-    struct Node *nodeActual = cola;
+    struct nodeDoble *nodeActual = cola;
     while(nodeActual != NULL) {
         printf("%d ", nodeActual->data);
         nodeActual = nodeActual->prev;
@@ -116,10 +112,10 @@ void RecorrerHaciaAtras(struct Node *cola) {
 
 }
 
-void freeLista(struct Node *head) {
-    struct Node *nodeActual = head;
+void freeLista(struct nodeDoble *head) {
+    struct nodeDoble *nodeActual = head;
     while (nodeActual != NULL) {
-        struct Node *nodoSiguiente = nodeActual->next;
+        struct nodeDoble *nodoSiguiente = nodeActual->next;
         free(nodeActual);
         nodeActual = nodoSiguiente;
     }

@@ -1,24 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node {
+struct nodeSimple {
         int data;
-        struct Node* next;
+        struct nodeSimple* next;
 
 };
 
 
 //funcion para agregar nuevo elemento al inicio de la lista
-void inserInicio(struct Node ** head, int valor) {
-        struct Node* newNode = malloc(sizeof(struct Node));
+void inserInicio(struct nodeSimple ** head, int valor) {
+        struct nodeSimple* newNode = malloc(sizeof(struct nodeSimple));
         newNode->data = valor;
         newNode->next = *head;
         *head = newNode;
 }
 
 //imprimir la lista luego de agregar nodo
-void imprimirlista(struct Node* head) {
-        struct Node *actual;
+void imprimirlista(struct nodeSimple* head) {
+        struct nodeSimple *actual;
         printf("\nla lista es:\n");
         for(actual = head; actual != NULL; actual = actual->next)
                 printf("%d ->", actual->data);
@@ -26,8 +26,8 @@ void imprimirlista(struct Node* head) {
 }
 
 //funcion para agregar nodo al final
-void inserfin(struct Node ** head, int valor) {
-        struct Node* newNode = malloc(sizeof(struct Node));
+void inserfin(struct nodeSimple ** head, int valor) {
+        struct nodeSimple* newNode = malloc(sizeof(struct nodeSimple));
 
         newNode->data = valor;
         newNode->next = NULL;
@@ -35,7 +35,7 @@ void inserfin(struct Node ** head, int valor) {
         if (*head == NULL) {
                 *head = newNode;
         } else {
-                struct Node* temp;
+                struct nodeSimple* temp;
 		for (temp = *head; temp->next != NULL; temp = temp->next);
 		temp->next = newNode;
 	}
@@ -47,17 +47,17 @@ void inserfin(struct Node ** head, int valor) {
 
 
 //incertar en posicion especifica
-void posicionesp(struct Node **head) {
+void posicionesp(struct nodeSimple **head) {
         int valor;
         int posicion;
         int i;
 
-        printf("\nValor de nuevo nod:\n");
+        printf("\nValor de nuevo nodo:\n");
         scanf("%d", &valor);
         printf("Posicion del nuevo nodo (0 para inicio):\n");
         scanf("%d", &posicion);
 
-        struct Node*  newNode = (struct Node*)malloc(sizeof(struct Node));
+        struct nodeSimple*  newNode = (struct nodeSimple*)malloc(sizeof(struct nodeSimple));
 
         newNode->data = valor;
         newNode->next = NULL;
@@ -68,7 +68,7 @@ void posicionesp(struct Node **head) {
                 return;
         }
 
-        struct Node *temp = *head;
+        struct nodeSimple *temp = *head;
         for (i = 0; temp != NULL && i < posicion -1; i++) {
                 temp = temp->next;
         }
@@ -84,13 +84,13 @@ void posicionesp(struct Node **head) {
 
 
 //eliminar nodo de lista enlazada basado en el data
-void eliminarnodo(struct Node **head) {
+void eliminarnodo(struct nodeSimple **head) {
         int borrar_valor;
-        printf("\nIngrsar valor a eliminar:\n");
+        printf("\nIngresar valor a eliminar:\n");
         scanf("%d", &borrar_valor);
 
-        struct Node *actual = *head;
-        struct Node *anterior = NULL;
+        struct nodeSimple *actual = *head;
+        struct nodeSimple *anterior = NULL;
 
         for (actual = *head; actual != NULL && actual->data !=borrar_valor; actual = actual->next) {
                 anterior = actual;
@@ -110,12 +110,12 @@ void eliminarnodo(struct Node **head) {
 
 
 //buscar elemento (utilizar el data) recorrer con for como el anteiror mas facil
-void buscar_valor(struct Node** head) {
+void buscar_valor(struct nodeSimple** head) {
         int valor_buscado;
         printf("\nIngresar valor a buscar:");
         scanf("%d", &valor_buscado);
 
-        struct Node* actual;
+        struct nodeSimple* actual;
         for(actual = *head; actual != NULL; actual = actual->next){
                if (actual->data == valor_buscado) {
                printf("\nEl valor %d si se encuentra en la lista \n", valor_buscado);
